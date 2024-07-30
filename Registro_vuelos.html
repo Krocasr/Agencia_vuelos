@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html lang="es"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Registro de Vuelos</title> 
+    <script> 
+        function verificarFormulario() { 
+            const origen = document.getElementById('origen').value.trim(); 
+            const destino = document.getElementById('destino').value.trim(); 
+            const fecha = document.getElementById('fecha').value.trim(); 
+            const plazas = document.getElementById('plazas').value.trim(); 
+            const precio = document.getElementById('precio').value.trim(); 
+ 
+            if (!origen || !destino || !fecha || !plazas || !precio) { 
+                alert('Todos los campos son obligatorios.'); 
+                return false; 
+            } 
+ 
+            if (isNaN(plazas) || isNaN(precio)) { 
+                alert('Las plazas y el precio deben ser valores numéricos.'); 
+                return false; 
+            } 
+ 
+            return true; 
+        } 
+    </script> 
+</head> 
+<body> 
+    <h2>Formulario de Registro de Vuelos</h2> 
+    <form action="insertar_vuelo.php" method="post" onsubmit="return verificarFormulario()"> 
+        <label for="origen">Origen:</label><br> 
+        <input type="text" id="origen" name="origen"><br> 
+ 
+        <label for="destino">Destino:</label><br> 
+        <input type="text" id="destino" name="destino"><br> 
+ 
+        <label for="fecha">Fecha:</label><br> 
+        <input type="date" id="fecha" name="fecha"><br> 
+ 
+        <label for="plazas">Plazas Disponibles:</label><br> 
+        <input type="number" id="plazas" name="plazas"><br> 
+ 
+        <label for="precio">Precio:</label><br> 
+        <input type="number" id="precio" name="precio" step="0.01"><br><br> 
+ 
+        <input type="submit" value="Registrar Vuelo"> 
+    </form> 
+</body> 
+</html>
